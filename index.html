@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archimedes: The Ultimate Vibe Check</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', 'Segoe UI Emoji', sans-serif; }
+    </style>
+</head>
+
+<body>
+    <div class="glow-bg"></div>
+
+    <audio id="bg-music" loop>
+        <source src="bg_music (1).mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="click-sfx">
+        <source src="click_sfx (1).mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="fail-sfx">
+        <source src="fail.sfx.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="splash-sfx">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <header>
+        <div class="user-stats">
+            <div class="stat-item">
+                <span class="label">LEVEL</span>
+                <span id="level-val" class="value">1</span>
+            </div>
+            <div class="xp-bar-container">
+                <div id="xp-fill" class="xp-fill"></div>
+            </div>
+            <div class="stat-item">
+                <span class="label">XP</span>
+                <span id="xp-val" class="value">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="app">
+        <section id="intro" class="card active">
+            <h1>Archimédův zákon: <span class="neon-text">No Cap Edition</span> 🛁</h1>
+            <p class="subtitle">Seš ready rizznout fyziku? Pojďme checknout vibe vztlaku.</p>
+            <div class="content">
+                <p>Bro, Archimedes byl v podstatě první, kdo zjistil, že voda má main character energy. Když
+                    skočíš do poolu, voda si řekne "Wait, uhni," a začne tě pushovat nahoru. To je ta <span
+                        class="highlight">Vztlaková síla</span>, lowkey největší buff v přírodě.</p>
+            </div>
+            <button class="btn-primary" onclick="nextStep('theory')">Start the Quest 🚀</button>
+        </section>
+
+        <section id="theory" class="card">
+            <h2>The Lore (Teorie) 📜</h2>
+            <div class="explanation">
+                <p>"Těleso ponořené do kapaliny je nadlehčováno silou, která se rovná váze kapaliny tělesem vytlačené."
+                </p>
+                <div class="translation">
+                    <p><strong>Neboli:</strong> Když tvůj skibidi zadek dropne do vany, voda tě začne
+                        nadlehčovat silou, která je stejně heavy jako ta voda, co jsi vytlačil. <strong>No cap.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="formula">
+                <span class="math">F<sub>vz</sub> = V · ρ · g</span>
+                <p class="formula-desc">V = Volume (Jak moc jsi thicc), ρ = Density (Jak moc je voda mid), g = Gravity
+                    (L zemská přitažlivost)</p>
+                <div class="variations">
+                    <p><strong>Variace:</strong><br>
+                        V = F<sub>vz</sub> / (ρ · g)<br>
+                        ρ = F<sub>vz</sub> / (V · g)</p>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="nextStep('sandbox')">Vstoupit do Sandboxu 🛠️</button>
+        </section>
+
+        <section id="sandbox" class="card">
+            <h2>The Sandbox: <span class="neon-text">Buoyancy Check</span> 🧪</h2>
+            <p class="subtitle">Zkus si, co floatuje a co sinkne. Click the objects to drop them!</p>
+            
+            <div class="sandbox-container">
+                <div class="tank" id="tank">
+                    <canvas id="water-canvas"></canvas>
+                    <div id="objects-in-tank"></div>
+                </div>
+                
+                <div class="object-selector">
+                    <div class="spawn-btn" onclick="spawnObject('banana')">🍌<span class="label">Banana</span></div>
+                    <div class="spawn-btn" onclick="spawnObject('metalBall')">🎱<span class="label">Metal</span></div>
+                    <div class="spawn-btn" onclick="spawnObject('feather')">🪶<span class="label">Feather</span></div>
+                    <div class="spawn-btn" onclick="spawnObject('ice')">🧊<span class="label">Ice</span></div>
+                </div>
+            </div>
+
+            <div class="sandbox-stats">
+                <p id="buoyancy-info">Vyber objekt a sleduj tu energii.</p>
+            </div>
+
+            <button class="btn-primary" onclick="nextStep('bio')">Kdo byl Archimedes? 👑</button>
+        </section>
+
+        <section id="bio" class="card">
+            <h2>The OG: Archimedes 👑</h2>
+            <div class="bio-content">
+                <p>Archimedes byl ultimátní matematický rizzler. Žil kolem roku <span class="highlight">287–212 př. n.
+                        l.</span>
+                    v <span class="highlight">Syrakusách</span> (Sicílie). V podstatě to byl Ancient Greek
+                    tech bilionář, akorát místo Tesly používal vanu.</p>
+                <p>Legenda říká, že běhal nahý po ulicích a křičel <span class="neon-text">"EUREKA!"</span> (Mám
+                    to!), protože byl mega hyped z toho, že přišel na zákon o vytlačování vody. Real Sigma behavior.</p>
+            </div>
+            <button class="btn-primary" onclick="startQuiz()">Prove your Rizz 🧪</button>
+        </section>
+
+        <section id="q1" class="card">
+            <div class="badge">Question 1</div>
+            <h2>Představ si, že dropneš heavy gold korunu do vody. Bude floatovat nebo sinkne?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Bude floatovat (Total Rizz)</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 50)">Sinkne (L ratio + Hustota)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Transformuje se v kočku</button>
+            </div>
+            <div class="feedback"></div>
+        </section>
+
+        <section id="q2" class="card">
+            <div class="badge">Question 2</div>
+            <h2>Jak se jmenuje ta síla, co tě v bazénu nadlehčuje?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Gravitační (Mid force)</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 50)">Vztlaková (Main character
+                    force)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Magnetická (Sus force)</button>
+            </div>
+            <div class="feedback"></div>
+        </section>
+
+        <section id="q3" class="card">
+            <div class="badge">Question 3</div>
+            <h2>Ve vzorci Fvz = V · ρ · g, co znamená to "ρ" (ró)?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, true, 50)">Density / Hustota (Jak moc je to
+                    thicc)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Speed / Rychlost (Zoomies)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Volume / Objem (Thiccness)</button>
+            </div>
+            <div class="feedback"></div>
+        </section>
+
+        <section id="q4" class="card">
+            <div class="badge">Question 4</div>
+            <h2>Odkud byl náš boy Archimedes?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Prague (Pilsen vibes)</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 50)">Syracuse / Syrakusy (Sicílie
+                    vibes)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">New York (Ohio vibes)</button>
+            </div>
+            <div class="feedback"></div>
+        </section>
+
+        <section id="q5" class="card">
+            <div class="badge">Question 5</div>
+            <h2>Jaktože obří steel lodě floatují, i když je metal mega heavy?</h2>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, true, 50)">Vytlačí mega weight vody (Gigachad
+                    volume)</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Používají Bluetooth buoyancy</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, -30)">Oceán se jich prostě bojí</button>
+            </div>
+            <div class="feedback"></div>
+        </section>
+
+        <section id="gameover" class="card">
+            <h2 class="neon-text">SKIBIDI RESET 💀</h2>
+            <p>Tvoje XP droply moc low. Jdeš zpátky do lobby.</p>
+            <div class="final-score">
+                <p>Status: <span class="highlight">L ratio</span></p>
+            </div>
+            <button class="btn-primary" onclick="location.reload()">Zkusit znova (Mewing session)</button>
+        </section>
+
+        <section id="finish" class="card">
+            <h2>Quest Completed! 🏆</h2>
+            <p>Teď seš oficiálně Buoyancy Sigma. Tvůj mozek je mega huge.</p>
+            <div class="final-score">
+                <p>Final Level: <span id="final-level-val">1</span></p>
+                <p>Total XP: <span id="final-xp-val">0</span></p>
+            </div>
+            <button class="btn-primary" onclick="location.reload()">Replay the Vibe</button>
+        </section>
+    </main>
+
+    <div id="toast" class="toast">XP ZÍSKÁNO! +50</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
